@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>GitHub Files Uploader</title>
+<style>
+:root{--bg:#080808;--panel:#111;--panel2:#181818;--line:rgba(255,255,255,.09);--text:#f5f5f5;--muted:#969696;--gold:#F5B83D;--gold2:#C98A18;--red:#e84c4c;--green:#3ddc84;--blue:#6ca8ff}
+*{box-sizing:border-box;scrollbar-width:none}*::-webkit-scrollbar{display:none}html{background:var(--bg);scroll-behavior:smooth}body{margin:0;min-height:100vh;color:var(--text);font-family:Inter,Arial,sans-serif;background:radial-gradient(circle at 50% -160px,rgba(245,184,61,.15),transparent 420px),linear-gradient(#080808,#0b0b0b 55%,#070707)}button,input,select{font:inherit}.hidden{display:none!important}.app{width:min(1250px,94%);margin:auto;padding:18px 0 90px}.card{background:linear-gradient(150deg,rgba(255,255,255,.045),transparent),var(--panel);border:1px solid var(--line);border-radius:20px;padding:18px;box-shadow:0 18px 48px rgba(0,0,0,.38)}.login{max-width:450px;margin:64px auto}.login h1{margin:0;font-weight:950;letter-spacing:-.03em}.muted{color:var(--muted)}label{display:block;margin:13px 0 7px;color:#aaa;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.06em}input,select{width:100%;border:1px solid var(--line);background:#0a0a0a;color:#fff;border-radius:12px;padding:12px 13px;outline:0}input:focus,select:focus{border-color:rgba(245,184,61,.72);box-shadow:0 0 0 3px rgba(245,184,61,.11)}.btn{border:0;border-radius:12px;padding:11px 14px;font-weight:850;cursor:pointer;color:#171006;background:linear-gradient(135deg,#ffd36c,var(--gold),var(--gold2));transition:.16s transform,.16s opacity}.btn:active{transform:scale(.97)}.btn:disabled{opacity:.45;cursor:not-allowed}.btn2{background:#1a1a1a;color:#eee;border:1px solid var(--line)}.danger{background:#3b1717;color:#ff9b9b;border:1px solid rgba(255,90,90,.2)}.success{background:#153623;color:#8df0b3;border:1px solid rgba(61,220,132,.22)}.header{position:sticky;top:0;z-index:20;display:flex;justify-content:space-between;gap:12px;align-items:center;padding:12px 0;background:linear-gradient(rgba(8,8,8,.98),rgba(8,8,8,.82),transparent);backdrop-filter:blur(14px)}.brand{font-weight:950;letter-spacing:-.03em}.actions,.tools{display:flex;gap:9px;flex-wrap:wrap;align-items:center}.layout{display:grid;grid-template-columns:285px 1fr;gap:14px}.side{position:sticky;top:76px;height:calc(100vh - 95px);overflow:auto}.sideHead{display:flex;justify-content:space-between;align-items:center;gap:8px}.sideHead h2{font-size:18px;margin:0}.repoSearch{margin:12px 0}.repoList{display:grid;gap:7px}.repo{padding:11px;border-radius:12px;border:1px solid var(--line);background:#151515;color:#ddd;cursor:pointer}.repo:hover,.repo.active{border-color:rgba(245,184,61,.42);background:rgba(245,184,61,.1)}.repoName{font-weight:850;word-break:break-word}.repoMeta{font-size:10px;color:#8d8d8d;margin-top:4px}.mainTop{display:grid;gap:12px}.topInfo{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}.topInfo h2{margin:0;font-size:19px}.repoTag{font-size:11px;color:#888;word-break:break-all;margin-top:5px}.breadcrumbs{display:flex;gap:6px;align-items:center;overflow:auto;padding:3px 0}.crumb{border:0;background:#171717;color:#ddd;padding:8px 10px;border-radius:9px;white-space:nowrap;cursor:pointer}.crumb:last-child{color:#171006;background:linear-gradient(135deg,#ffd36c,#e8a62d)}.toolbar{display:grid;grid-template-columns:1fr auto;gap:10px}.status{padding:12px;border-radius:12px;background:#0a0a0a;border:1px solid var(--line);border-left:3px solid var(--gold);white-space:pre-wrap;color:#ccc;font-size:13px}.drop{border:1px dashed rgba(245,184,61,.38);border-radius:17px;padding:22px;text-align:center;background:rgba(245,184,61,.035);cursor:pointer}.drop.drag{background:rgba(245,184,61,.12);border-color:var(--gold)}.drop strong{display:block;font-size:16px}.drop small{color:#8e8e8e}.progressBox{display:grid;gap:9px}.progressTop{display:flex;justify-content:space-between;gap:10px;font-size:12px}.progressName{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.bar{height:12px;border-radius:999px;background:#222;overflow:hidden;border:1px solid var(--line)}.bar>div{height:100%;width:0;background:linear-gradient(90deg,#c98a18,#ffd36c);transition:width .12s linear}.queue{display:grid;gap:5px;max-height:165px;overflow:auto}.queueItem{display:flex;justify-content:space-between;gap:10px;padding:7px 9px;background:#151515;border-radius:9px;font-size:11px}.sectionHead{display:flex;justify-content:space-between;align-items:center;gap:10px;margin:18px 0 10px}.sectionHead h2{margin:0;font-size:18px}.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(175px,1fr));gap:11px}.item{overflow:hidden;border:1px solid var(--line);border-radius:16px;background:#111;box-shadow:0 12px 28px rgba(0,0,0,.28)}.preview{aspect-ratio:4/3;background:#090909;display:flex;align-items:center;justify-content:center;overflow:hidden;font-size:58px}.preview img{width:100%;height:100%;object-fit:cover}.meta{padding:10px}.name{font-weight:900;font-size:12px;word-break:break-word;line-height:1.3}.sub{font-size:10px;color:#909090;margin-top:5px;word-break:break-word}.itemBtns{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:9px}.itemBtns button{padding:8px 6px;font-size:10px;border-radius:9px}.empty{padding:30px;text-align:center;color:#888;border:1px dashed var(--line);border-radius:16px}.modal{position:fixed;inset:0;z-index:99;display:flex;align-items:center;justify-content:center;padding:16px;background:rgba(0,0,0,.84);backdrop-filter:blur(8px)}.modalBox{width:min(520px,100%);max-height:92vh;overflow:auto;border-radius:21px;padding:18px;background:#111;border:1px solid rgba(255,255,255,.11);box-shadow:0 30px 100px #000}.modalHead{display:flex;justify-content:space-between;align-items:center;gap:10px}.modalHead h2{margin:0}.check{display:flex;align-items:center;gap:9px;margin-top:13px;color:#bbb}.check input{width:auto}.toast{position:fixed;right:16px;bottom:16px;z-index:120;max-width:min(420px,90vw);padding:12px 14px;border-radius:12px;background:#1b1b1b;border:1px solid var(--line);box-shadow:0 18px 50px #000}.spinner{width:18px;height:18px;border:3px solid #444;border-top-color:var(--gold);border-radius:50%;display:inline-block;animation:s .8s linear infinite}@keyframes s{to{transform:rotate(360deg)}}
+@media(max-width:820px){.layout{grid-template-columns:1fr}.side{position:static;height:auto;max-height:290px}.header{align-items:flex-start}.brand{display:none}.toolbar{grid-template-columns:1fr}.grid{grid-template-columns:repeat(2,1fr);gap:8px}.app{width:calc(100% - 20px)}.btn{font-size:12px;padding:10px 11px}}
+@media(max-width:390px){.grid{grid-template-columns:1fr 1fr}.itemBtns{grid-template-columns:1fr}.preview{font-size:44px}}
+.drop.busy{opacity:.55;pointer-events:none}.item{transition:.18s opacity,.18s transform,.18s border-color}.item.pending{border-color:rgba(245,184,61,.55);opacity:.78}.item.removing{opacity:.35;transform:scale(.97);pointer-events:none}
+</style>
+</head>
+<body>
+<div id="loginPage" class="app"><div class="card login"><h1>GitHub Files Uploader</h1><p class="muted">Login gamit ang GitHub username at personal access token.</p><label>GitHub Username</label><input id="loginUser" autocomplete="username" placeholder="username"><label>GitHub Token</label><input id="loginToken" type="password" autocomplete="current-password" placeholder="github_pat_..."><button class="btn" style="width:100%;margin-top:16px" onclick="login()">Login</button><div class="status" style="margin-top:14px">Recommended token permissions: Repository contents read/write, at repository administration permission para makagawa ng repository.</div></div></div>
+<div id="dashboard" class="app hidden">
+ <div class="header"><div class="brand">GitHub Files Uploader</div><div class="actions"><button class="btn btn2" onclick="refreshAll()">Reload</button><button class="btn" onclick="openCreateRepo()">+ Repository</button><button class="btn btn2" onclick="logout()">Logout</button></div></div>
+ <div class="layout">
+  <aside class="card side"><div class="sideHead"><h2>Repositories</h2><span id="repoCount" class="muted">0</span></div><input id="repoSearch" class="repoSearch" placeholder="Search repository..." oninput="renderRepos()"><div id="repoList" class="repoList"><div class="empty"><span class="spinner"></span></div></div></aside>
+  <main>
+   <div class="card mainTop">
+    <div class="topInfo"><div><h2 id="currentTitle">Select a repository</h2><div id="repoInfo" class="repoTag">Wala pang napiling repository.</div></div><div class="actions"><button id="newFolderBtn" class="btn btn2" onclick="openCreateFolder()" disabled>+ Folder</button><button id="uploadBtn" class="btn" onclick="filePicker.click()" disabled>Upload Files</button></div></div>
+    <div id="breadcrumbs" class="breadcrumbs"></div>
+    <div class="toolbar"><input id="itemSearch" placeholder="Search uploaded items..." oninput="renderItems()"><button class="btn btn2" onclick="loadContents()">Refresh Folder</button></div>
+    <input id="filePicker" type="file" multiple class="hidden" onchange="handleFiles(this.files)">
+    <div id="dropZone" class="drop" onclick="filePicker.click()" ondragover="dragOver(event)" ondragleave="dragLeave(event)" ondrop="dropFiles(event)"><strong>Tap or drop files here</strong><small>Up to 90 MiB per file • Large files use raw upload • Same filename auto-replaces</small></div>
+    <div id="progressBox" class="progressBox hidden"><div class="progressTop"><span id="progressName" class="progressName">Preparing...</span><b id="progressPercent">0%</b></div><div class="bar"><div id="progressBar"></div></div><div id="queue" class="queue"></div></div>
+    <div id="status" class="status">Ready.</div>
+   </div>
+   <div class="sectionHead"><h2>Uploaded Items</h2><span id="itemCount" class="muted">0 items</span></div><div id="items" class="grid"><div class="empty">Select a repository.</div></div>
+  </main>
+ </div>
+</div>
+<div id="repoModal" class="modal hidden"><div class="modalBox"><div class="modalHead"><h2>Create Repository</h2><button class="btn btn2" onclick="closeModal('repoModal')">Close</button></div><label>Repository Name</label><input id="newRepoName" placeholder="my-files"><label>Description</label><input id="newRepoDesc" placeholder="Optional description"><label class="check"><input id="newRepoPrivate" type="checkbox"> Private repository</label><label class="check"><input id="newRepoReadme" type="checkbox" checked> Initialize with README</label><button class="btn" style="width:100%;margin-top:16px" onclick="createRepository()">Create Repository</button></div></div>
+<div id="folderModal" class="modal hidden"><div class="modalBox"><div class="modalHead"><h2>Create Folder</h2><button class="btn btn2" onclick="closeModal('folderModal')">Close</button></div><label>Folder Name</label><input id="newFolderName" placeholder="images"><button class="btn" style="width:100%;margin-top:16px" onclick="createFolder()">Create Folder</button></div></div>
+<div id="toast" class="toast hidden"></div>
+<script>
+const $=id=>document.getElementById(id);
+const API='https://api.github.com';
+const MAX_FILE_BYTES=90*1024*1024;
+const DIRECT_UPLOAD_BYTES=25*1024*1024;
+const LARGE_MANIFEST='.ghfu-large-files.json';
+const LARGE_RELEASE_TAG='ghfu-large-files';
+let user=null,repos=[],currentRepo=null,currentPath='',items=[],uploading=false,deleting=false,creating=false,contentsRequest=0,refreshTimer=null;
+function headers(){return{'Authorization':'Bearer '+localStorage.getItem('ghfu_token'),'Accept':'application/vnd.github+json','X-GitHub-Api-Version':'2022-11-28'}}
+function esc(s){return String(s??'').replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;').replaceAll("'",'&#039;')}
+function jstr(s){return JSON.stringify(String(s??'')).replaceAll('&','\\u0026').replaceAll('<','\\u003c').replaceAll('>','\\u003e').replaceAll("'",'\\u0027')}
+function toast(s){$('toast').textContent=s;$('toast').classList.remove('hidden');setTimeout(()=>$('toast').classList.add('hidden'),2600)}
+function status(s){$('status').textContent=s}
+function encode64(buffer){const bytes=new Uint8Array(buffer);let binary='';const chunk=0x8000;for(let i=0;i<bytes.length;i+=chunk)binary+=String.fromCharCode(...bytes.subarray(i,i+chunk));return btoa(binary)}
+function formatBytes(n){if(!Number.isFinite(n))return'';const u=['B','KB','MB','GB'];let i=0;while(n>=1024&&i<u.length-1){n/=1024;i++}return`${n.toFixed(i?1:0)} ${u[i]}`}
+function isImage(name){return /\.(png|jpe?g|gif|webp|bmp|svg|avif)$/i.test(name)}
+async function apiFetch(url,opt={}){const r=await fetch(url,{cache:'no-store',...opt,headers:{...headers(),...(opt.headers||{})}});const text=await r.text();let j=null;try{j=text?JSON.parse(text):null}catch{j=text}if(!r.ok){const e=Error(j?.message||`GitHub error ${r.status}`);e.status=r.status;e.data=j;throw e}return j}
+async function login(){const name=$('loginUser').value.trim(),token=$('loginToken').value.trim();if(!name||!token)return alert('Ilagay ang username at token.');localStorage.setItem('ghfu_user',name);localStorage.setItem('ghfu_token',token);try{user=await apiFetch(API+'/user');if(user.login.toLowerCase()!==name.toLowerCase())toast(`Logged in as ${user.login}`);showDashboard();await loadRepos()}catch(e){localStorage.removeItem('ghfu_token');alert('Login failed: '+e.message)}}
+function logout(){localStorage.removeItem('ghfu_token');location.reload()}
+function showDashboard(){$('loginPage').classList.add('hidden');$('dashboard').classList.remove('hidden')}
+async function init(){const name=localStorage.getItem('ghfu_user'),token=localStorage.getItem('ghfu_token');$('loginUser').value=name||'';$('loginToken').value=token||'';if(name&&token){try{user=await apiFetch(API+'/user');showDashboard();await loadRepos()}catch{localStorage.removeItem('ghfu_token')}}}
+async function loadRepos(){status('Loading repositories...');try{repos=await apiFetch(API+'/user/repos?per_page=100&sort=updated&affiliation=owner');renderRepos();status('Repositories loaded.')}catch(e){status('Error: '+e.message)}}
+function renderRepos(){const q=$('repoSearch').value.toLowerCase().trim();const list=repos.filter(r=>r.name.toLowerCase().includes(q));$('repoCount').textContent=list.length;$('repoList').innerHTML=list.map(r=>`<div class="repo ${currentRepo?.id===r.id?'active':''}" onclick="openRepo(${r.id})"><div class="repoName">${esc(r.name)}</div><div class="repoMeta">${r.private?'Private':'Public'} • ${esc(r.default_branch||'main')}</div></div>`).join('')||'<div class="empty">No repositories found.</div>'}
+async function openRepo(id){const next=repos.find(r=>r.id===id);if(!next)return;revokePreviewUrls(items);items=[];currentRepo=next;currentPath='';$('currentTitle').textContent=currentRepo.name;$('repoInfo').textContent=`${currentRepo.full_name} • ${currentRepo.private?'Private':'Public'}`;setUploadBusy();renderRepos();renderBreadcrumbs();await loadContents()}
+function renderBreadcrumbs(){if(!currentRepo){$('breadcrumbs').innerHTML='';return}const parts=currentPath?currentPath.split('/'):[];let built='',html=`<button class="crumb" onclick='goPath("")'>${esc(currentRepo.name)}</button>`;parts.forEach(p=>{built=built?built+'/'+p:p;html+=`<span class="muted">/</span><button class="crumb" onclick='goPath(${jstr(built)})'>${esc(p)}</button>`});$('breadcrumbs').innerHTML=html}
+async function goPath(path){if(path===currentPath)return;revokePreviewUrls(items);items=[];currentPath=path;renderBreadcrumbs();await loadContents()}
+async function loadContents(silent=false){
+ if(!currentRepo)return;
+ const request=++contentsRequest,repo={...currentRepo},repoName=repo.full_name,branch=repo.default_branch,pathAtStart=currentPath;
+ if(!silent){status('Loading folder...');if(!items.length)$('items').innerHTML='<div class="empty"><span class="spinner"></span> Loading...</div>'}
+ try{
+  const path=pathAtStart?'/'+encodePath(pathAtStart):'';
+  const contentRequest=apiFetch(`${API}/repos/${repoName}/contents${path}?ref=${encodeURIComponent(branch)}&_=${Date.now()}`).catch(e=>{if(e.status===404)return[];throw e});
+  const [j,largeState]=await Promise.all([contentRequest,fetchLargeManifestState(repo)]);
+  if(request!==contentsRequest||!currentRepo||currentRepo.full_name!==repoName||currentPath!==pathAtStart)return;
+  revokePreviewUrls(items);items=mergeLargeFiles(Array.isArray(j)?j:[],largeState.manifest,pathAtStart);renderItems();status(items.length?'Folder synced.':'Folder is empty.');
+ }catch(e){
+  if(request!==contentsRequest)return;
+  if(e.status===404){revokePreviewUrls(items);items=[];renderItems();status('Folder is empty.')}else{if(!silent){items=[];renderItems()}status('Error: '+e.message)}
+ }
+}
+function renderItems(){
+ const q=$('itemSearch').value.toLowerCase().trim();
+ const list=items.filter(x=>x.name.toLowerCase().includes(q)).sort((a,b)=>a.type===b.type?a.name.localeCompare(b.name):a.type==='dir'?-1:1);
+ $('itemCount').textContent=list.length+' items';
+ $('items').innerHTML=list.map(x=>{
+  const folder=x.type==='dir',raw=x._previewUrl||x.download_url||rawUrl(x.path),state=x._removing?' removing':x._pending?' pending':'';
+  const detail=x._removing?'Deleting...':x._pending?'Uploading...':folder?'Folder':x._largeAsset?'Large file • '+formatBytes(x.size):formatBytes(x.size);
+  return`<div class="item${state}"><div class="preview" ${folder&&!x._removing?`onclick='goPath(${jstr(x.path)})' style="cursor:pointer"`:''}>${folder?'📁':isImage(x.name)?`<img src="${esc(raw)}" alt="">`:'💾'}</div><div class="meta"><div class="name">${esc(x.name)}</div><div class="sub">${detail} • ${esc(x.path)}</div><div class="itemBtns">${folder?`<button class="btn" onclick='goPath(${jstr(x.path)})'>Open</button>`:`<button class="btn" onclick='copyLink(${jstr(raw)})'>Copy</button>`}<button class="btn danger" onclick='deleteItem(${jstr(x.path)},${jstr(x.sha||'')},${jstr(x.type)})'>Delete</button></div></div></div>`
+ }).join('')||'<div class="empty">No uploaded items found.</div>';
+}
+function openCreateRepo(){$('newRepoName').value='';$('newRepoDesc').value='';$('repoModal').classList.remove('hidden')}
+function openCreateFolder(){if(!currentRepo)return;$('newFolderName').value='';$('folderModal').classList.remove('hidden')}
+function closeModal(id){$(id).classList.add('hidden')}
+async function createRepository(){const name=$('newRepoName').value.trim();if(!name)return alert('Ilagay ang repository name.');status('Creating repository...');try{const repo=await apiFetch(API+'/user/repos',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name,description:$('newRepoDesc').value.trim(),private:$('newRepoPrivate').checked,auto_init:$('newRepoReadme').checked})});closeModal('repoModal');repos.unshift(repo);renderRepos();await openRepo(repo.id);toast('Repository created.')}catch(e){alert(e.message);status('Error: '+e.message)}}
+async function createFolder(){
+ if(uploading||deleting||creating)return toast('Please wait for the current action to finish.');
+ const name=$('newFolderName').value.trim().replace(/^\/+|\/+$/g,'');
+ if(!name||name.includes('/')||name==='.'||name==='..')return alert('Gumamit ng isang valid folder name.');
+ pauseBackgroundRefresh();
+ const repo=currentRepo,pathAtStart=currentPath,folderPath=[pathAtStart,name].filter(Boolean).join('/'),keepPath=folderPath+'/.gitkeep';
+ closeModal('folderModal');creating=true;setUploadBusy();status('Creating folder...');
+ try{
+  const existing=await findExistingSha(repo,keepPath);
+  await putContent(repo,keepPath,new Uint8Array(0).buffer,`Create folder ${name}`,existing);
+  if(currentRepo&&currentRepo.id===repo.id&&currentPath===pathAtStart){upsertItem({name,path:folderPath,type:'dir',size:0,sha:'',_pending:false});renderItems()}
+  status('Folder created and synced.');toast(existing?'Folder already exists.':'Folder created.');scheduleContentsRefresh();
+ }catch(e){alert(e.message);status('Error: '+e.message)}
+ finally{creating=false;setUploadBusy()}
+}
+function dragOver(e){e.preventDefault();$('dropZone').classList.add('drag')}
+function dragLeave(e){e.preventDefault();$('dropZone').classList.remove('drag')}
+function dropFiles(e){e.preventDefault();$('dropZone').classList.remove('drag');handleFiles(e.dataTransfer.files)}
+async function handleFiles(fileList){
+ if(!currentRepo||uploading||deleting||creating)return;
+ const selected=[...fileList],pathAtStart=currentPath;$('filePicker').value='';if(!selected.length)return;
+ const tooLarge=selected.filter(f=>f.size>MAX_FILE_BYTES),reserved=selected.filter(f=>!pathAtStart&&f.name===LARGE_MANIFEST),files=selected.filter(f=>f.size<=MAX_FILE_BYTES&&!(!pathAtStart&&f.name===LARGE_MANIFEST));
+ if(tooLarge.length)alert(`${tooLarge.length} file(s) skipped. This uploader supports up to 90 MiB per file:\n\n${tooLarge.map(f=>f.name+' ('+formatBytes(f.size)+')').join('\n')}`);
+ if(reserved.length)alert(`${LARGE_MANIFEST} is reserved for the large-file index and was skipped.`);
+ if(!files.length)return;
+ pauseBackgroundRefresh();
+ const repo=currentRepo,totalBytes=files.reduce((a,f)=>a+Math.max(f.size,1),0);
+ let finishedBytes=0,successCount=0,replacedCount=0,failedCount=0;
+ uploading=true;setUploadBusy(true);setProgress(0);$('progressBox').classList.remove('hidden');renderQueue(files,0);
+ for(let i=0;i<files.length;i++){
+  const file=files[i],path=[pathAtStart,file.name].filter(Boolean).join('/'),sameView=()=>currentRepo&&currentRepo.id===repo.id&&currentPath===pathAtStart;
+  let previous=null,previewUrl=null;
+  renderQueue(files,i);$('progressName').textContent=`Preparing ${file.name} (${i+1}/${files.length})`;
+  if(sameView()){
+   const old=items.find(x=>x.path===path);previous=old?{...old}:null;
+   previewUrl=isImage(file.name)?URL.createObjectURL(file):null;
+   upsertItem({...previous,name:file.name,path,type:'file',size:file.size,sha:previous?.sha||'',download_url:previous?.download_url||null,_previewUrl:previewUrl,_pending:true});renderItems();
+  }
+  try{
+   const result=await uploadFile(repo,path,file,p=>{const overall=((finishedBytes+(Math.max(file.size,1)*p/100))/totalBytes)*100;setProgress(overall)},previous);
+   finishedBytes+=Math.max(file.size,1);successCount++;if(result.replaced)replacedCount++;setProgress(finishedBytes/totalBytes*100);markQueueDone(i,result.replaced);
+   if(previewUrl)URL.revokeObjectURL(previewUrl);
+   if(sameView())upsertItem({...(result.content||{}),name:file.name,path,type:'file',size:file.size,sha:result.content?.sha||'',download_url:result.content?.download_url||rawUrl(path),_pending:false});
+   if(sameView())renderItems();
+  }catch(e){
+   failedCount++;finishedBytes+=Math.max(file.size,1);setProgress(finishedBytes/totalBytes*100);markQueueError(i,e.message);if(previewUrl)URL.revokeObjectURL(previewUrl);
+   if(sameView()){if(previous)upsertItem(previous);else removeItem(path);renderItems()}
+   if(!confirm(`Failed: ${file.name}\n${friendlyUploadError(e)}\n\nContinue remaining files?`))break;
+  }
+ }
+ uploading=false;setUploadBusy(false);$('progressName').textContent=failedCount?'Upload finished with errors':'Upload complete';setProgress(100);
+ const summary=`${successCount} uploaded${replacedCount?` • ${replacedCount} replaced`:''}${failedCount?` • ${failedCount} failed`:''}.`;
+ if(currentRepo&&currentRepo.id===repo.id&&currentPath===pathAtStart)scheduleContentsRefresh(500);status(summary);
+ setTimeout(()=>$('progressBox').classList.add('hidden'),failedCount?4200:1800);
+}
+function renderQueue(files,current){$('queue').innerHTML=files.map((f,i)=>`<div class="queueItem" id="q${i}"><span>${i===current?'⬆️ ':''}${esc(f.name)}</span><span>${formatBytes(f.size)}</span></div>`).join('')}
+function markQueueDone(i,replaced=false){const el=$('q'+i);if(el){el.firstElementChild.textContent=(replaced?'🔁 ':'✅ ')+el.firstElementChild.textContent.replace(/^⬆️ /,'')}}
+function markQueueError(i,msg){const el=$('q'+i);if(el){el.firstElementChild.textContent='❌ '+el.firstElementChild.textContent.replace(/^⬆️ /,'');el.title=msg}}
+function setProgress(p){p=Math.max(0,Math.min(100,p));$('progressBar').style.width=p.toFixed(1)+'%';$('progressPercent').textContent=Math.round(p)+'%'}
+async function putContent(repo,path,buffer,message,sha=null){
+ const body={message,content:encode64(buffer),branch:repo.default_branch};if(sha)body.sha=sha;
+ return apiFetch(`${API}/repos/${repo.full_name}/contents/${encodePath(path)}`,{method:'PUT',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});
+}
+async function uploadFile(repo,path,file,onProgress,known=null){
+ const knownSha=known?.sha||known?._regularSha||null;let replaced=!!known;
+ if(file.size>DIRECT_UPLOAD_BYTES){
+  $('progressName').textContent=`Preparing raw upload for ${file.name}...`;
+  return uploadLargeReleaseAsset(repo,path,file,known,onProgress);
+ }
+ $('progressName').textContent=`Reading ${file.name}...`;
+ const base64=await readFileBase64(file,p=>onProgress(p*.10));
+ $('progressName').textContent=`Uploading ${file.name}...`;
+ let sha=knownSha;
+ try{
+  const result=await putFileContent(repo,path,base64,`Upload ${file.name}`,sha,p=>onProgress(10+p*.90));
+  if(known?._largeAsset)await removeLargeEntry(repo,path,known);
+  return{replaced,content:result.content};
+ }catch(firstError){
+  if(firstError.status!==409&&firstError.status!==422)throw firstError;
+  sha=await findExistingSha(repo,path,true);if(!sha)throw firstError;
+  replaced=true;$('progressName').textContent=`Replacing ${file.name}...`;
+  const result=await putFileContent(repo,path,base64,`Replace ${file.name}`,sha,p=>onProgress(10+p*.90));
+  if(known?._largeAsset)await removeLargeEntry(repo,path,known);
+  return{replaced,content:result.content};
+ }
+}
+function readFileBase64(file,onProgress){return new Promise((resolve,reject)=>{const parts=[],chunkSize=3*1024*1024;let offset=0;const reader=new FileReader();reader.onprogress=e=>{if(e.lengthComputable)onProgress(Math.min(100,(offset+e.loaded)/Math.max(file.size,1)*100))};reader.onerror=()=>reject(Error('Could not read this file.'));reader.onabort=()=>reject(Error('File reading was cancelled.'));reader.onload=()=>{const loaded=reader.result.byteLength;parts.push(encode64(reader.result));offset+=loaded;onProgress(Math.min(100,offset/Math.max(file.size,1)*100));if(offset<file.size)readNext();else resolve(parts)};function readNext(){reader.readAsArrayBuffer(file.slice(offset,Math.min(offset+chunkSize,file.size)))}if(file.size===0){onProgress(100);resolve([''])}else readNext()})}
+function putFileContent(repo,path,base64Parts,message,sha,onProgress){let prefix=`{"message":${JSON.stringify(message)},"branch":${JSON.stringify(repo.default_branch)}`;if(sha)prefix+=`,"sha":${JSON.stringify(sha)}`;const body=new Blob([prefix,',"content":"',...base64Parts,'"}'],{type:'application/json'});return xhrJson('PUT',`${API}/repos/${repo.full_name}/contents/${encodePath(path)}`,body,onProgress)}
+function xhrJson(method,url,body,onProgress){return new Promise((resolve,reject)=>{const xhr=new XMLHttpRequest();xhr.open(method,url);xhr.timeout=30*60*1000;Object.entries({...headers(),'Content-Type':'application/json'}).forEach(([k,v])=>xhr.setRequestHeader(k,v));xhr.upload.onprogress=e=>{if(e.lengthComputable&&onProgress)onProgress(e.loaded/e.total*100)};xhr.onload=()=>{let j={};try{j=JSON.parse(xhr.responseText||'{}')}catch{}if(xhr.status>=200&&xhr.status<300)resolve(j);else{const err=Error(j.message||`Upload failed (${xhr.status})`);err.status=xhr.status;err.data=j;reject(err)}};xhr.onerror=()=>reject(Error('Network error during upload. Check your connection and try again.'));xhr.ontimeout=()=>reject(Error('Upload timed out. Please use a faster or more stable connection.'));xhr.send(body)})}
+async function uploadLargeReleaseAsset(repo,path,file,known,onProgress){
+ const replaced=!!known,regularSha=known?.sha||known?._regularSha||null;
+ onProgress(2);const release=await ensureLargeRelease(repo);onProgress(6);
+ const assetName=makeLargeAssetName(path,file.name),asset=await uploadReleaseAssetRaw(repo,release,assetName,file,p=>onProgress(6+p*.82));
+ const entry={asset_id:asset.id,asset_name:asset.name,size:file.size,url:asset.browser_download_url,updated_at:new Date().toISOString()};
+ try{await mutateLargeManifest(repo,manifest=>{manifest.files[path]=entry})}catch(e){await safeDeleteReleaseAsset(repo,asset.id);throw e}
+ onProgress(94);
+ if(known?._assetId&&known._assetId!==asset.id)await safeDeleteReleaseAsset(repo,known._assetId);
+ if(regularSha){try{await deleteFile(repo,path,regularSha)}catch(e){if(e.status!==404)try{const latest=await findExistingSha(repo,path,true);if(latest)await deleteFile(repo,path,latest)}catch(cleanupError){console.warn('Could not remove replaced regular file:',cleanupError.message)}}}
+ onProgress(100);
+ return{replaced,content:{name:file.name,path,sha:'',size:file.size,type:'file',download_url:asset.browser_download_url,_largeAsset:true,_assetId:asset.id,_assetName:asset.name}};
+}
+async function ensureLargeRelease(repo){
+ try{return await apiFetch(`${API}/repos/${repo.full_name}/releases/tags/${encodeURIComponent(LARGE_RELEASE_TAG)}?_=${Date.now()}`)}catch(e){if(e.status!==404)throw e}
+ try{return await apiFetch(`${API}/repos/${repo.full_name}/releases`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({tag_name:LARGE_RELEASE_TAG,target_commitish:repo.default_branch,name:'GitHub Files Uploader — Large Files',body:'Large files uploaded by GitHub Files Uploader.',draft:false,prerelease:true})})}catch(e){if(e.status===422){try{return await apiFetch(`${API}/repos/${repo.full_name}/releases/tags/${encodeURIComponent(LARGE_RELEASE_TAG)}?_=${Date.now()}`)}catch{throw e}}throw e}
+}
+function uploadReleaseAssetRaw(repo,release,name,file,onProgress){return new Promise((resolve,reject)=>{const base=String(release.upload_url||`https://uploads.github.com/repos/${repo.full_name}/releases/${release.id}/assets`).replace(/\{.*$/,''),joiner=base.includes('?')?'&':'?';const xhr=new XMLHttpRequest();xhr.open('POST',`${base}${joiner}name=${encodeURIComponent(name)}&label=${encodeURIComponent(file.name)}`);xhr.timeout=30*60*1000;Object.entries(headers()).forEach(([k,v])=>xhr.setRequestHeader(k,v));xhr.setRequestHeader('Content-Type',file.type||'application/octet-stream');xhr.upload.onprogress=e=>{if(e.lengthComputable)onProgress(e.loaded/e.total*100)};xhr.onload=()=>{let j={};try{j=JSON.parse(xhr.responseText||'{}')}catch{}if(xhr.status>=200&&xhr.status<300)resolve(j);else{const err=Error(j.message||`Large upload failed (${xhr.status})`);err.status=xhr.status;err.data=j;reject(err)}};xhr.onerror=()=>reject(Error('Large raw upload was blocked by the browser or network.'));xhr.ontimeout=()=>reject(Error('Large upload timed out. Please use a faster or more stable connection.'));xhr.send(file)})}
+function makeLargeAssetName(path,fileName){const safe=String(fileName).replace(/[^A-Za-z0-9._-]+/g,'_').replace(/^\.+|\.+$/g,'')||'file.bin';return`ghfu-${hashPath(path)}-${Date.now()}-${safe}`}
+function hashPath(value){let h=2166136261;for(let i=0;i<value.length;i++){h^=value.charCodeAt(i);h=Math.imul(h,16777619)}return(h>>>0).toString(16).padStart(8,'0')}
+async function fetchLargeManifestState(repo){
+ try{const item=await apiFetch(`${API}/repos/${repo.full_name}/contents/${encodePath(LARGE_MANIFEST)}?ref=${encodeURIComponent(repo.default_branch)}&_=${Date.now()}`);const text=decodeBase64Utf8(String(item.content||'').replace(/\s/g,'')),parsed=JSON.parse(text||'{}');return{sha:item.sha,manifest:{version:1,files:parsed&&typeof parsed.files==='object'&&parsed.files?parsed.files:{}}}}catch(e){if(e.status===404)return{sha:null,manifest:{version:1,files:{}}};if(e instanceof SyntaxError)throw Error(`${LARGE_MANIFEST} contains invalid JSON.`);throw e}
+}
+async function mutateLargeManifest(repo,mutator){let lastError=null;for(let attempt=0;attempt<3;attempt++){const state=await fetchLargeManifestState(repo);mutator(state.manifest);const bytes=new TextEncoder().encode(JSON.stringify(state.manifest,null,2));try{return await putContent(repo,LARGE_MANIFEST,bytes.buffer,'Update large files index',state.sha)}catch(e){lastError=e;if(e.status!==409&&e.status!==422)throw e}}throw lastError||Error('Could not update the large files index.')}
+function mergeLargeFiles(normalItems,manifest,path){
+ const map=new Map();normalItems.filter(x=>x.path!==LARGE_MANIFEST).forEach(x=>map.set(x.path,x));const prefix=path?path+'/':'';
+ Object.entries(manifest.files||{}).forEach(([fullPath,entry])=>{if(!fullPath.startsWith(prefix))return;const relative=fullPath.slice(prefix.length);if(!relative)return;const slash=relative.indexOf('/');if(slash>=0){const name=relative.slice(0,slash),dirPath=prefix+name;if(!map.has(dirPath))map.set(dirPath,{name,path:dirPath,type:'dir',size:0,sha:'',_largeFolder:true});return}const regular=map.get(fullPath);map.set(fullPath,{name:relative,path:fullPath,type:'file',size:Number(entry.size)||0,sha:'',download_url:entry.url||'',_largeAsset:true,_assetId:entry.asset_id,_assetName:entry.asset_name,_regularSha:regular?.sha||''})});
+ return[...map.values()];
+}
+async function removeLargeEntry(repo,path,item){await mutateLargeManifest(repo,manifest=>{delete manifest.files[path]});if(item?._assetId)await safeDeleteReleaseAsset(repo,item._assetId)}
+async function removeLargeEntriesUnder(repo,path){const state=await fetchLargeManifestState(repo),prefix=path+'/';const targets=Object.entries(state.manifest.files||{}).filter(([p])=>p===path||p.startsWith(prefix));if(!targets.length)return;await mutateLargeManifest(repo,manifest=>{targets.forEach(([p])=>delete manifest.files[p])});for(const[,entry]of targets)if(entry.asset_id)await safeDeleteReleaseAsset(repo,entry.asset_id)}
+async function safeDeleteReleaseAsset(repo,assetId){try{await apiFetch(`${API}/repos/${repo.full_name}/releases/assets/${assetId}`,{method:'DELETE'})}catch(e){if(e.status!==404)console.warn('Could not remove old large asset:',e.message)}}
+function decodeBase64Utf8(base64){const binary=atob(base64),bytes=new Uint8Array(binary.length);for(let i=0;i<binary.length;i++)bytes[i]=binary.charCodeAt(i);return new TextDecoder().decode(bytes)}
+function localExistingFile(repo,path){return currentRepo&&currentRepo.id===repo.id?items.find(x=>x.path===path&&x.type==='file'):null}
+async function findExistingSha(repo,path,force=false){
+ const local=!force&&localExistingFile(repo,path);if(local?.sha)return local.sha;
+ try{const item=await apiFetch(`${API}/repos/${repo.full_name}/contents/${encodePath(path)}?ref=${encodeURIComponent(repo.default_branch)}&_=${Date.now()}`);return item&&item.type==='file'?item.sha:null}catch(e){if(e.status===404)return null;throw e}
+}
+function rawUrlFor(repo,path){return`https://raw.githubusercontent.com/${repo.full_name}/${encodePath(repo.default_branch)}/${encodePath(path)}`}
+function rawUrl(path){return currentRepo?rawUrlFor(currentRepo,path):''}
+function upsertItem(item){const index=items.findIndex(x=>x.path===item.path);if(index>=0)items[index]=item;else items.push(item)}
+function removeItem(path){const index=items.findIndex(x=>x.path===path);if(index>=0)items.splice(index,1)}
+function revokePreviewUrls(list){list.forEach(x=>{if(x._previewUrl)try{URL.revokeObjectURL(x._previewUrl)}catch{}})}
+function scheduleContentsRefresh(delay=350){clearTimeout(refreshTimer);refreshTimer=setTimeout(async()=>{await loadContents(true);refreshTimer=setTimeout(()=>loadContents(true),1000)},delay)}
+function pauseBackgroundRefresh(){clearTimeout(refreshTimer);contentsRequest++}
+function setUploadBusy(){const busy=uploading||deleting||creating;$('uploadBtn').disabled=busy||!currentRepo;$('newFolderBtn').disabled=busy||!currentRepo;$('dropZone').classList.toggle('busy',busy)}
+function friendlyUploadError(e){if(e.status===413||/too large|exceeds|90 mb|90 mib/i.test(e.message))return'The file or request exceeded the allowed limit. This version uses raw Release upload for files above 25 MiB and supports up to 90 MiB.';if(e.status===401)return'The GitHub token is invalid or expired.';if(e.status===403)return'The token needs Contents: read/write permission, or the repository/branch blocks this change.';if(/blocked by the browser/i.test(e.message))return e.message+' Open the uploader through HTTPS and try again.';return e.message}
+function encodePath(path){return path.split('/').map(encodeURIComponent).join('/')}
+async function copyLink(link){try{await navigator.clipboard.writeText(link);toast('Raw link copied.')}catch{prompt('Copy this link:',link)}}
+async function deleteItem(path,sha,type){
+ if(uploading||deleting||creating)return toast('Please wait for the current action to finish.');
+ if(!confirm(`Delete ${path}?${type==='dir'?'\nAll files inside this folder will also be deleted.':''}`))return;
+ pauseBackgroundRefresh();
+ const repo=currentRepo,pathAtStart=currentPath,previous=items.find(x=>x.path===path),previousIndex=items.findIndex(x=>x.path===path);let removalTimer=null;
+ if(previous){previous._removing=true;renderItems();removalTimer=setTimeout(()=>{if(currentRepo&&currentRepo.id===repo.id&&currentPath===pathAtStart){removeItem(path);renderItems()}},120)}
+ deleting=true;setUploadBusy();status('Deleting '+path+'...');
+ try{
+  if(type==='dir'){
+   if(!previous?._largeFolder)await deleteFolderFast(repo,path);
+   await removeLargeEntriesUnder(repo,path);
+  }else if(previous?._largeAsset){
+   await removeLargeEntry(repo,path,previous);
+   const regularSha=previous._regularSha||await findExistingSha(repo,path,true);if(regularSha)await deleteFile(repo,path,regularSha);
+  }else{
+   const actualSha=sha||await findExistingSha(repo,path,true);if(!actualSha)throw Error('File no longer exists.');await deleteFile(repo,path,actualSha);
+  }
+  if(currentRepo&&currentRepo.id===repo.id&&currentPath===pathAtStart){removeItem(path);renderItems()}
+  status('Deleted and synced.');toast('Deleted successfully.');scheduleContentsRefresh();
+ }catch(e){
+  if(removalTimer)clearTimeout(removalTimer);
+  if(currentRepo&&currentRepo.id===repo.id&&currentPath===pathAtStart&&previous){removeItem(path);previous._removing=false;items.splice(Math.min(previousIndex,items.length),0,previous);renderItems()}
+  alert(e.message);status('Delete error: '+e.message);
+ }finally{deleting=false;setUploadBusy()}
+}
+async function deleteFile(repo,path,sha){return apiFetch(`${API}/repos/${repo.full_name}/contents/${encodePath(path)}`,{method:'DELETE',headers:{'Content-Type':'application/json'},body:JSON.stringify({message:`Delete ${path}`,sha,branch:repo.default_branch})})}
+async function deleteFolderFast(repo,path){
+ try{
+  const ref=await apiFetch(`${API}/repos/${repo.full_name}/git/ref/heads/${encodePath(repo.default_branch)}?_=${Date.now()}`);
+  const parent=await apiFetch(`${API}/repos/${repo.full_name}/git/commits/${ref.object.sha}?_=${Date.now()}`);
+  const tree=await apiFetch(`${API}/repos/${repo.full_name}/git/trees`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({base_tree:parent.tree.sha,tree:[{path,mode:'040000',type:'tree',sha:null}]})});
+  const commit=await apiFetch(`${API}/repos/${repo.full_name}/git/commits`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({message:`Delete folder ${path}`,tree:tree.sha,parents:[ref.object.sha]})});
+  await apiFetch(`${API}/repos/${repo.full_name}/git/refs/heads/${encodePath(repo.default_branch)}`,{method:'PATCH',headers:{'Content-Type':'application/json'},body:JSON.stringify({sha:commit.sha,force:false})});
+ }catch(fastError){await deleteFolderRecursive(repo,path)}
+}
+async function deleteFolderRecursive(repo,path){const content=await apiFetch(`${API}/repos/${repo.full_name}/contents/${encodePath(path)}?ref=${encodeURIComponent(repo.default_branch)}&_=${Date.now()}`);for(const x of content){if(x.type==='dir')await deleteFolderRecursive(repo,x.path);else await deleteFile(repo,x.path,x.sha)}}
+async function refreshAll(){await loadRepos();if(currentRepo){const updated=repos.find(r=>r.id===currentRepo.id);if(updated)currentRepo=updated;await loadContents()}}
+init();
+</script>
+</body>
+</html>
