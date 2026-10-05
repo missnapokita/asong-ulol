@@ -1,0 +1,7 @@
+name = "ghfu-upload-relay"
+main = "worker.js"
+compatibility_date = "2026-10-05"
+
+[vars]
+ALLOWED_ORIGINS = "https://missnapokita.github.io"
+ALLOWED_OWNERS = "missnapokita"
